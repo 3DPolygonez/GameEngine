@@ -26,19 +26,24 @@
             form.Paint += new System.Windows.Forms.PaintEventHandler(this.form_Paint);
             return;
         }
-
-        protected void form_Paint(object sender, PaintEventArgs e)
+        protected void form_Paint(
+            object sender, 
+            PaintEventArgs e)
         {
-            this._grafx.Render(e.Graphics);
+            this._grafx.Render(
+                target: e.Graphics);
             return;
         }
-
-        public Interface.Pixmap newPixmap(string fileName)
+        public Interface.Pixmap newPixmap(
+            string fileName)
         {
-            return new Pixmap(Image.FromFile(fileName));
+            return new Pixmap(Image.FromFile(
+                filename: fileName));
         }
-
-        public void drawPoly(Point[] points, Brush brush, Pen pen)
+        public void drawPoly(
+            Point[] points, 
+            Brush brush, 
+            Pen pen)
         {
             if (points.Length != 0)
             {
@@ -53,8 +58,11 @@
             }
             return;
         }
-
-        public void drawPoly(Point[] points, Point offset, Brush brush, Pen pen)
+        public void drawPoly(
+            Point[] points, 
+            Point offset, 
+            Brush brush, 
+            Pen pen)
         {
             if (points.Length != 0)
             {
@@ -75,7 +83,6 @@
             }
             return;
         }
-
         public void drawEllipse(int x, int y, int width, int height, Brush brush, Pen pen)
         {
             if (brush != null)

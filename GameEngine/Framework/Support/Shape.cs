@@ -4,6 +4,8 @@
     using System.Collections.Generic;
     using System.Text;
     using System.Drawing;
+    using System.Windows.Forms;
+    using System.Linq;
 
     public static class Shape
     {
@@ -125,6 +127,24 @@
                     (sinTheta * (pointToRotate.X - centerPoint.X) +
                     cosTheta * (pointToRotate.Y - centerPoint.Y) + centerPoint.Y)
             };
+        }
+        public static Point ToPoint(
+            this Point3D self,
+            double perspecticeCoefficient,
+            Point3D rotationCentrePoint)
+        {
+            return self.PointOnTheScreen(
+                perspecticeCoefficient: perspecticeCoefficient,
+                rotationCentrePoint: rotationCentrePoint);
+        }
+        public static Point[] ToPoints(
+            this List<Point3D> self,
+            double perspecticeCoefficient,
+            Point3D rotationCentrePoint)
+        {
+            return self.Select(n => n.ToPoint(
+                perspecticeCoefficient: perspecticeCoefficient,
+                rotationCentrePoint: rotationCentrePoint)).ToArray();
         }
     }
 }

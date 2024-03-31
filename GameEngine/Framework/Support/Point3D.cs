@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,10 +21,16 @@ namespace GameEngine.Framework.Support
             X = x;
             Y = y;
             Z = z;
+            OriginalX = x;
+            OriginalY = y;
+            OriginalZ = z;
         }
         public double X { get; set; }
         public double Y { get; set; }
         public double Z { get; set; }
+        public double OriginalX { get; set; }
+        public double OriginalY { get; set; }
+        public double OriginalZ { get; set; }
         public static Point3D operator *(
             Matrix3D matrix,
             Point3D point)
@@ -57,6 +64,18 @@ namespace GameEngine.Framework.Support
             return (Y * perspecticeCoefficient)
                 / (Z + perspecticeCoefficient)
                 + rotationCentrePoint.Y;
+        }
+        public Point PointOnTheScreen(
+            double perspecticeCoefficient,
+            Point3D rotationCentrePoint)
+        {
+            return new Point(
+                x: (int)PointOnTheScreenX(
+                    perspecticeCoefficient: perspecticeCoefficient,
+                    rotationCentrePoint: rotationCentrePoint),
+                y: (int)PointOnTheScreenY(
+                    perspecticeCoefficient: perspecticeCoefficient,
+                    rotationCentrePoint: rotationCentrePoint));
         }
     }
 }

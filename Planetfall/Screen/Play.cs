@@ -12,8 +12,6 @@ namespace Planetfall.Screen
     public class Play : GameEngine.Framework.Interface.Screen
     {
         private readonly Model.Play.World _world;
-        private int _size = 0;
-        private int _increment = 1;
         public Play(
             Game game) : base(game)
         {
@@ -33,30 +31,8 @@ namespace Planetfall.Screen
         public override void draw(
             long deltaTime)
         {
-            game.graphics.drawRect(
-                x: 0, 
-                y: 0, 
-                width: game.graphics.width, 
-                height: game.graphics.height,
-                brush: Brushes.Black,
-                pen: null);
-            if (_size < 10)
-            {
-                _size = 10;
-                _increment = 1;
-            }
-            else if (_size > game.graphics.width)
-            {
-                _increment = -1;
-            }
-            _size += _increment;
-            game.graphics.drawRect(
-                x: (game.graphics.width / 2) - (_size / 2),
-                y: (game.graphics.height / 2) - (_size / 2),
-                width: _size,
-                height: _size,
-                brush: null,
-                pen: Pens.Orange);
+            _world.draw(
+                game: game);
         }
         public override void pause()
         {
