@@ -45,14 +45,18 @@
   <ItemGroup>
     <Compile Include="Asset\Constants.cs" />
     <Compile Include="Asset\List.cs" />
+    <Compile Include="Model\About\World.cs" />
     <Compile Include="Model\Button.cs" />
     <Compile Include="Model\MainMenu\World.cs" />
+    <Compile Include="Model\Play\World.cs" />
     <Compile Include="PlanetfallGame.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Screen\About.cs" />
     <Compile Include="Screen\Loading.cs" />
     <Compile Include="Screen\MainMenu.cs" />
+    <Compile Include="Screen\Play.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

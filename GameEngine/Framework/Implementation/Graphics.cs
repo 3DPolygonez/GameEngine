@@ -21,8 +21,8 @@
             this._grafx = context.Allocate(
                 form.CreateGraphics(),
                 new Rectangle(0, 0, this._width, this._height));
-            //this._grafx.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            //this._grafx.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBilinear;
+            this._grafx.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            this._grafx.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBilinear;
             form.Paint += new System.Windows.Forms.PaintEventHandler(this.form_Paint);
             return;
         }

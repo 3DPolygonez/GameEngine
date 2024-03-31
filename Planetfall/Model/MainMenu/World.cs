@@ -7,7 +7,12 @@ namespace Planetfall.Model.MainMenu
     public class World
     {
         private List<Button> _buttons;
-
+        public enum ButtonName : int
+        {
+            Play = 0,
+            About = 1,
+            Quit = 2
+        }
         public World(
             int screenWidth,
             int screenHeight)
@@ -17,9 +22,23 @@ namespace Planetfall.Model.MainMenu
             this._buttons = new List<Button>();
             this._buttons.Add(
                 item: new Button(
+                    text: "play",
+                    x: screenWidth / 2 - Asset.Constants.buttonWidth / 2,
+                    y: buttonStart + (int)(0 * Asset.Constants.buttonHeight),
+                    width: Asset.Constants.buttonWidth,
+                    height: Asset.Constants.buttonHeight));
+            this._buttons.Add(
+                item: new Button(
+                    text: "about",
+                    x: screenWidth / 2 - Asset.Constants.buttonWidth / 2,
+                    y: buttonStart + (int)(1.5 * Asset.Constants.buttonHeight),
+                    width: Asset.Constants.buttonWidth,
+                    height: Asset.Constants.buttonHeight));
+            this._buttons.Add(
+                item: new Button(
                     text: "quit game", 
                     x: screenWidth / 2 - Asset.Constants.buttonWidth / 2, 
-                    y: buttonStart + (int)(4.5 * Asset.Constants.buttonHeight), 
+                    y: buttonStart + (int)(3.0 * Asset.Constants.buttonHeight), 
                     width: Asset.Constants.buttonWidth, 
                     height: Asset.Constants.buttonHeight));
             return;

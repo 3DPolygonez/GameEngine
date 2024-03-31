@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Text;
     using System.Windows.Forms;
 
@@ -73,7 +74,14 @@
 
         public bool isKeyPressed(int keyCode)
         {
-            return this.keyEvents.Contains(keyCode);
+            if (this.keyEvents.Any())
+            {
+                if (this.keyEvents.Contains(keyCode))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public bool mouseInBounds(System.Drawing.Rectangle rect)
@@ -151,8 +159,8 @@
         protected void key_Up(object sender, System.Windows.Forms.KeyEventArgs e)
         {
             byte[] keys = new byte[255];
-            Support.NativeMethods.GetKeyboardState(keys);
-            setKeyEvents(keys);
+            Support.NativeMethods.GetKeyboardState(keystate: keys);
+            setKeyEvents(keys: keys);
             return;
         }
 
@@ -178,6 +186,10 @@
             if (keys[(int)Keys.Space] > 100)
             {
                 this._keyEvents.Add((int)Keys.Space);
+            }
+            if (keys[(int)Keys.Escape] > 100)
+            {
+                this._keyEvents.Add((int)Keys.Escape);
             }
             if (keys[(int)Keys.D0] > 100)
             {

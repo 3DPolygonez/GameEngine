@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Reflection;
 using System.Text;
+using GameEngine.Framework.Interface;
+using static Planetfall.Model.MainMenu.World;
 
 namespace Planetfall.Screen
 {
@@ -10,7 +12,7 @@ namespace Planetfall.Screen
     {
         private readonly Model.MainMenu.World _world;
         public MainMenu(
-            GameEngine.Framework.Interface.Game game) : base(game)
+            Game game) : base(game)
         {
             // create a new main menu model
             _world = new Model.MainMenu.World(
@@ -21,21 +23,37 @@ namespace Planetfall.Screen
             this.game.setCursor(Asset.List.mainMenuCursor);
             return;
         }
-        public override void update(long deltaTime)
+        public override void update(
+            long deltaTime)
         {
             // update the main menu model
-            this._world.update(game, deltaTime);
+            this._world.update(
+                game: game,
+                deltaTime: deltaTime);
 
             // see if any of the buttons have been pushed
-            if (_world.buttons[0].mouseLeftDown)
+            // see if any of the buttons have been pushed
+            if (_world.buttons[(int)ButtonName.Play].mouseLeftDown)
             {
-                // push the game through to the instruction screen
+                // push the game through to the play screen
+                this.game.screen = new Play(
+                    game: this.game);
+            }
+            else if (_world.buttons[(int)ButtonName.About].mouseLeftDown)
+            {
+                // push the game through to the about screen
+                this.game.screen = new About(
+                    game: this.game);
+            }
+            else if (_world.buttons[(int)ButtonName.Quit].mouseLeftDown)
+            {
+                // close the game
                 this.game.close();
             }
             return;
         }
-
-        public override void draw(long deltaTime)
+        public override void draw(
+            long deltaTime)
         {
             // draw the main menu background
             int xCount = this.game.graphics.width / Asset.List.mainMenuBackground.width;
@@ -53,10 +71,10 @@ namespace Planetfall.Screen
             }
 
             this.game.graphics.drawRect(
-                _world.buttons[0].x - Asset.Constants.buttonHeight,
-                _world.buttons[0].y - Asset.Constants.buttonHeight,
-                _world.buttons[0].width + (Asset.Constants.buttonHeight * 2),
-                _world.buttons[0].y - _world.buttons[0].y + (Asset.Constants.buttonHeight * 3),
+                _world.buttons[(int)ButtonName.Play].x - Asset.Constants.buttonHeight,
+                _world.buttons[(int)ButtonName.Play].y - Asset.Constants.buttonHeight,
+                _world.buttons[(int)ButtonName.Play].width + (Asset.Constants.buttonHeight * 2),
+                Asset.Constants.buttonHeight * 6,
                 Brushes.Black,
                 null);
 
