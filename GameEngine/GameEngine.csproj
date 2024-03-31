@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Framework\Implementation\Audio.cs" />
     <Compile Include="Framework\Implementation\FileIO.cs" />
+    <Compile Include="Framework\Support\Angle.cs" />
     <Compile Include="Framework\Support\Color.cs" />
     <Compile Include="Framework\Support\FormState.cs" />
     <Compile Include="Framework\Implementation\Game.cs">
@@ -50,6 +51,7 @@
     <Compile Include="Framework\Implementation\Graphics.cs" />
     <Compile Include="Framework\Implementation\Input.cs" />
     <Compile Include="Framework\Implementation\Music.cs" />
+    <Compile Include="Framework\Support\Matrix3D.cs" />
     <Compile Include="Framework\Support\NativeMethods.cs" />
     <Compile Include="Framework\Implementation\Pixmap.cs" />
     <Compile Include="Framework\Implementation\Sound.cs" />
@@ -62,6 +64,7 @@
     <Compile Include="Framework\Interface\Pixmap.cs" />
     <Compile Include="Framework\Interface\Screen.cs" />
     <Compile Include="Framework\Interface\Sound.cs" />
+    <Compile Include="Framework\Support\Point3D.cs" />
     <Compile Include="Framework\Support\Shape.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
