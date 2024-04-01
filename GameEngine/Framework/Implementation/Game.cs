@@ -29,9 +29,9 @@
         {           
             // set the basic properties for the form
             ClientSize = new System.Drawing.Size(800, 600);
-            this.MinimizeBox = false;
-            this.MaximizeBox = false;
-            this._formState.Maximize(this);
+            //this.MinimizeBox = false;
+            //this.MaximizeBox = false;
+            //this._formState.Maximize(this);
             SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint, true);
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             StartPosition = FormStartPosition.CenterScreen;

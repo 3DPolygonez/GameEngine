@@ -6,6 +6,8 @@
     using System.Drawing;
     using System.Windows.Forms;
     using System.Linq;
+    using System.Text.Json.Serialization;
+    using System.Text.Json;
 
     public static class Shape
     {
@@ -145,6 +147,13 @@
             return self.Select(n => n.ToPoint(
                 perspecticeCoefficient: perspecticeCoefficient,
                 rotationCentrePoint: rotationCentrePoint)).ToArray();
+        }
+        public static List<List<Point3D>> Clone(
+            this List<List<Point3D>> self)
+        {
+            string json = JsonSerializer.Serialize(self);
+            List<List<Point3D>> output = JsonSerializer.Deserialize<List<List<Point3D>>>(json);
+            return output;
         }
     }
 }

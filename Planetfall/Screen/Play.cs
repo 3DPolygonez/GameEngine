@@ -45,6 +45,8 @@ namespace Planetfall.Screen
         public override void update(
             long deltaTime)
         {
+            _world.update(
+                game: game);
             if (game.input.isKeyPressed(keyCode: (int)Keys.Escape))
             {
                 // return to menu

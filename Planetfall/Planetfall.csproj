@@ -48,6 +48,7 @@
     <Compile Include="Model\About\World.cs" />
     <Compile Include="Model\Button.cs" />
     <Compile Include="Model\MainMenu\World.cs" />
+    <Compile Include="Model\Play\GameObject.cs" />
     <Compile Include="Model\Play\World.cs" />
     <Compile Include="PlanetfallGame.cs">
       <SubType>Form</SubType>
